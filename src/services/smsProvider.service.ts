@@ -1,3 +1,5 @@
+import { text } from "express";
+
 export const sendSmsToGP= async (message:string,number:string):Promise<any>=>{
     const endpoint = 'http://localhost:8071/api/sms/provider1';
     const response = await fetch(endpoint,{
@@ -15,6 +17,7 @@ export const sendSmsToGP= async (message:string,number:string):Promise<any>=>{
 }
 
 export const sendSmsToBL= async (message:string,number:string):Promise<any>=>{
+    console.log(message,number);
     const endpoint = 'http://localhost:8072/api/sms/provider2';
     const response = await fetch(endpoint,{
         method:'POST',

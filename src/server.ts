@@ -1,11 +1,11 @@
 import express from 'express'
 import notificationRoutes from './routes/notification.route'
+import './bullMq/bullMQ.worker';
 
 
 const app=express();
 const port=3000;
 app.use(express.json())
-
 app.use('',notificationRoutes)
 app.get('/',(req,res)=>{
     res.json({

@@ -2,10 +2,10 @@ import { Worker, Job } from 'bullmq';
 import { getProvider } from '../services/smsProvider.service';
 import { failedQueue } from './bullMQ.producer';
 
-const worker = new Worker("taskQueue", async (job: Job) => {
-    console.log("got call in worker");
+export const worker = new Worker("taskQueue", async (job: Job) => {
     const sendSMSToProvider = getProvider();//have to use a while loop to check provider.
-    const response = await sendSMSToProvider(job.data.text, job.data.phone);
+    console.log(job.data);
+    const response = await sendSMSToProvider(job.data.text, job.data.number);
     console.log(await response);
     if (await response.status !== 200) {
         throw new Error(`Failed to send SMS: Status ${response.status}`);
