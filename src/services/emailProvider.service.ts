@@ -1,9 +1,3 @@
-interface EmailRequest {
-    subject: string;
-    body: string;
-    recipients: string[];
-}
-
 const emailProviders = {
     provider1: {api:'http://localhost:8091/api/email/provider1',name:'provider1'},
     provider2: {api:'http://localhost:8092/api/email/provider2',name:'provider2'},
