@@ -1,4 +1,4 @@
-import { Sms } from "../types/notification.type";
+import { Email, Sms } from "../types/notification.type";
 import { Queue } from 'bullmq';
 
 export const taskQueue = new Queue('taskQueue', {
@@ -15,16 +15,16 @@ export const taskQueue = new Queue('taskQueue', {
     }
 });
 
-export const failedQueue = new Queue('failedQueue', {
+export const failedQueue = new Queue('failedNotification', {
     connection: {
         host: "localhost",
         port: 6379
     }
 });
 
-export const addToQueue =async (sms: Sms) => {
+export const addToQueue =async (notification: Sms|Email) => {
     console.log('got call at addToQueue');
-    taskQueue.add('SMS', sms);
+    taskQueue.add('notification', notification);
     const jobCount =await taskQueue.getJobCounts();
     console.log('Number of jobs in the queue:', jobCount);
 }

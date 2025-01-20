@@ -50,7 +50,7 @@ export const sendSmsToRobi= async (message:string,number:string):Promise<any>=>{
         return await response   
 }
 
-export const getProvider=(lastProvider:string | null)=>{
+export const getSmsProvider=(lastProvider:string | null)=>{
     const providers=[sendSmsToGP,sendSmsToBL,sendSmsToRobi];
     for (let provider of providers){
         if(lastProvider && lastProvider===provider.name){

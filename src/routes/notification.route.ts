@@ -1,8 +1,8 @@
 import { Router } from "express";
-import { sendSMS } from "../controllers/notification.controller";
+import { sendNotification } from "../controllers/notification.controller";
 
 const router=Router();
 
-router.post('/:type',sendSMS);
+router.post('/:type',sendNotification);
 
 export default router;
