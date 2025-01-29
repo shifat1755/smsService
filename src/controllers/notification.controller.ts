@@ -1,28 +1,43 @@
 import { Request, Response } from "express";
-import { addToQueue } from "../bullMq/bullMQ.producer";
+import { addToSmsQueue } from "../messageBrokers/smsNotificationProducer";
 import { Sms } from "../types/notification.type";
+import { addToEmailQueue } from "../messageBrokers/emailNotificationProducer";
 
-export const sendNotification = async (req: Request, res: Response) => {
-    const type = req.params.type;
-    if (type === "sms") {
+export const sendSmsNotification = async (req: Request, res: Response) => {
+    try{
         const sms: Sms = {
             text: req.body.text,
             number: req.body.phone,
             lastProvider: null,
         };
-        addToQueue(sms);
+        addToSmsQueue(sms);
+        res.status(200).json({
+            status: "added to queue and will be deliver shortly"
+        });
     }
-    else if (type === "email") {
+    catch(err){
+        res.status(500).json({
+            status: "failed to add to queue"
+        });
+    }
+};
+
+export const sendEmailNotification = async (req: Request, res: Response) => {
+    try{
         const email = {
             subject: req.body.subject,
             body: req.body.body,
             recipients: req.body.recipients,
             lastProvider: null,
         };
-        addToQueue(email);
+        addToEmailQueue(email);
+        res.status(200).json({
+            status: "added to queue and will be deliver shortly"
+        });
     }
-    
-    res.status(200).json({
-        status: "added to queue and will be deliver shortly"
-    });
+    catch(err){
+        res.status(500).json({
+            status: "failed to add to queue"
+        });
+    }
 };

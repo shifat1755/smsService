@@ -1,6 +1,7 @@
 import express from 'express'
 import notificationRoutes from './routes/notification.route'
-import './bullMq/bullMQ.worker';
+import './messageBrokers/smsNotificationWorker';
+import './messageBrokers/emailNotificationWorker';
 
 
 const app=express();

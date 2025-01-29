@@ -1,12 +1,12 @@
 export type Sms = {
     text: string;
     number: string;
-    lastProvider: string | null;
+    lastProvider: number | null;
 };
 
 export type Email={
     subject:string;
     body:string;
     recipients:string;
-    lastProvider:string | null;
+    lastProvider:number | null;
 }
