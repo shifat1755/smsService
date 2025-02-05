@@ -8,7 +8,7 @@ export const sendSmsNotification = async (req: Request, res: Response) => {
         const sms: Sms = {
             text: req.body.text,
             number: req.body.phone,
-            lastProvider: null,
+            lastProviders: [],
         };
         await addToSmsQueue(sms);
         res.status(200).json({

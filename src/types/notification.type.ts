@@ -1,7 +1,7 @@
 export type Sms = {
     text: string;
     number: string;
-    lastProvider: number | null;
+    lastProviders: [];
 };
 
 export type Email={

@@ -6,12 +6,12 @@ import { validateRequest } from "../middlewares/validateRequest";
 const router=Router();
 
 const smsSchema = z.object({
-    phoneNumber: z.string().min(10).max(15),
-    message: z.string().min(1)
+    phone: z.string().min(10).max(15),
+    text: z.string().min(1)
   });
   
 const emailSchema = z.object({
-    email: z.array(z.string().email()).nonempty(),
+    recipients: z.array(z.string().email()).nonempty(),
     subject: z.string().min(1),
     body: z.string().min(1)
   });
