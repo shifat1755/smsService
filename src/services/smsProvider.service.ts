@@ -12,7 +12,7 @@ export const sendSmsToGP= async (message:string,number:string):Promise<any>=>{
             text:message
         }),
         })
-    return await response 
+    return response 
 
 }
 
@@ -28,7 +28,7 @@ export const sendSmsToBL= async (message:string,number:string):Promise<any>=>{
             text:message
         }),
         })
-    return await response;
+    return response;
 }
 
 
@@ -44,7 +44,7 @@ export const sendSmsToRobi= async (message:string,number:string):Promise<any>=>{
             text:message
         }),
         })
-        return await response  
+        return response  
 }
 
 export const getSmsProvider = (lastProviderIndex: number | null) => {

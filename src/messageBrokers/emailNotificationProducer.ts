@@ -18,7 +18,7 @@ export const emailQueue = new Queue('emailQueue', {
 
 
 export const addToEmailQueue =async (notification:Email) => {
-    emailQueue.add('emailNotification', notification);
+    await emailQueue.add('emailNotification', notification);
     const jobCount =await emailQueue.getJobCounts();
     console.log('Number of jobs in the emailQueue:', jobCount);
 }

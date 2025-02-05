@@ -10,7 +10,7 @@ export const sendSmsNotification = async (req: Request, res: Response) => {
             number: req.body.phone,
             lastProvider: null,
         };
-        addToSmsQueue(sms);
+        await addToSmsQueue(sms);
         res.status(200).json({
             status: "added to queue and will be deliver shortly"
         });
@@ -30,7 +30,7 @@ export const sendEmailNotification = async (req: Request, res: Response) => {
             recipients: req.body.recipients,
             lastProvider: null,
         };
-        addToEmailQueue(email);
+        await addToEmailQueue(email);
         res.status(200).json({
             status: "added to queue and will be deliver shortly"
         });

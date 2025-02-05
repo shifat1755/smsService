@@ -12,7 +12,7 @@ export const sendEmailToProvider1 = async (subject: string, body: string, recipi
                 recipients: recipients,
             }),
         });
-        return await response;
+        return  response;
     }
     catch(err){
         return err;}
@@ -31,7 +31,7 @@ export const sendEmailToProvider2 = async (subject: string, body: string, recipi
                 recipients: recipients,
             }),
         });
-        return await response;
+        return  response;
     }
     catch(err){
         return err;}
@@ -54,7 +54,7 @@ export const sendEmailToProvider3 = async (subject: string, body: string, recipi
             recipients: recipients,
         }),
     });
-    return await response;
+    return  response;
 }
 catch(err){
     return err;}

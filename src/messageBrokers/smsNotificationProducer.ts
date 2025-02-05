@@ -18,7 +18,7 @@ export const smsQueue = new Queue('smsQueue', {
 
 
 export const addToSmsQueue =async (notification: Sms) => {
-    smsQueue.add('smsNotification', notification);
+    await smsQueue.add('smsNotification', notification);
     const jobCount =await smsQueue.getJobCounts();
     console.log('Number of jobs in the smsQueue:', jobCount);
 }
